@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+        <div id="app">
+            <div class="toolbar">
+                <button @click="formatText('bold')">Bold</button>
+                <button @click="formatText('italic')">Italic</button>
+                <button @click="formatText('underline')">Underline</button>
+                <button @click="formatText('insertOrderedList')">Ordered List</button>
+                <button @click="formatText('insertUnorderedList')">Unordered List</button>
+                <select v-model="fontSize" @change="changeFontSize">
+                    <option value="1">Small</option>
+                    <option value="3">Normal</option>
+                    <option value="5">Large</option>
+                    <option value="7">Extra Large</option>
+                </select>
+                <input type="color" @input="changeColor($event.target.value)" />
+                <button @click="uploadImage">Upload Image</button>
+                <button @click="undo">Undo</button>
+                <button @click="redo">Redo</button>
+                <button @click="saveContent">Save</button>
+                <button @click="loadContent">Load</button>
+            </div>
+            <div class="editor" contenteditable="true" @input="updateContent" v-html="content"></div>
+        </div>
+        <input type="file" ref="fileInput" @change="handleImageUpload" style="display: none;" />
+        <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+        <script src="app.js"></script>
+    </body>
+    </html> 
